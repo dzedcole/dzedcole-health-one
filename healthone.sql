@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 dec 2021 om 14:58
+-- Gegenereerd op: 24 feb 2022 om 10:17
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 8.0.10
 
@@ -28,139 +28,76 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(5) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `picture`) VALUES
-(1, 'crosstrainer', 'crosstrainer.jpg'),
-(2, 'hometrainer', 'hometrainer.jpg'),
-(3, 'loopband', 'loopband.jpg'),
-(4, 'roeitrainer', 'roeitrainer.jpg');
+INSERT INTO `categories` (`id`, `image`, `name`) VALUES
+(1, 'img/categories/crosstrainer.jpg', 'Crosstrainer'),
+(2, 'img/categories/hometrainer.jpg', 'Hometrainer'),
+(3, 'img/categories/loopband.jpg', 'Loopband'),
+(4, 'img/categories/roeitrainer.jpg', 'Roeitrainer');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `openings_tijden`
+-- Tabelstructuur voor tabel `products`
 --
 
-CREATE TABLE `openings_tijden` (
-  `id` int(11) NOT NULL,
-  `dag` varchar(255) NOT NULL,
-  `tijd` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `products` (
+  `id` int(5) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `categoryid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `openings_tijden`
+-- Gegevens worden geëxporteerd voor tabel `products`
 --
 
-INSERT INTO `openings_tijden` (`id`, `dag`, `tijd`) VALUES
-(1, 'Maandag', '7:00-20:00'),
-(2, 'Dinsdag', '8:00-20:00'),
-(3, 'Woensdag', '7:00-20:00'),
-(4, 'Donderdag', '8:00-20:00'),
-(5, 'Vrijdag', '7:00-20:00'),
-(6, 'Zaterdag', '8:00-13:00\r\n'),
-(7, 'Zondag', '8:00-13:00');
+INSERT INTO `products` (`id`, `image`, `name`, `description`, `categoryid`) VALUES
+(1, '/img/categories/crosstrainer/Crosstrainer1.jpg', 'Virtufit iConsole CTR 2.1 Crosstrainer', 'Als je een doel voor ogen hebt met het sporten, kun je ook gebruikmaken van de 24 programma’s van de VirtuFit iConsole CTR 2.1 ergometer crosstrainer. Het merendeel van deze programma’s past de weerstand tijdens het trainen aan, voor het beste resultaat t', 1),
+(2, '/img/categories/crosstrainer/Crosstrainer2.jpg', 'tectake - 2-in-1 Crosstraine', 'Plezier bij het sporten - Met deze 2-in-1 Hometrainer en Crosstrainer houdt u uw lichaam met veel plezier in vorm. Daarnaast wordt het cardiovasculaire systeem bevordert en komen alle belangrijke fitnessonderdelen zoals kracht, uithoudingsvermogen, coördi', 1),
+(3, '/img/categories/crosstrainer/Crosstrainer3.jpg', 'VirtuFit iConsole Total Fit', 'De VirtuFit iConsole Total Fit Crosstrainer geeft je een natuurlijk gevoel met een ergonomische elliptische stapbeweging. De grote anti-slip pedalen zijn instelbaar en maken het gemakkelijk om een goede sporthouding te vinden. Nadat je deze stevige, 52,6 ', 1),
+(4, '/img/categories/crosstrainer/Crosstrainer4.jpg', 'CAPITAL SPORTS Stormstrike 2k Crosstrainer', 'Hit the fan! De CAPITAL SPORTS Stormstrike 2k Fan Bike is jouw innovative Cross-Training-Ergobike voor thuisgebruik. Stap op de pedalen en breng je lichaam tot aan de limiet, want hier train je gelijktijdig het hele lichaam, vergroot je de spierkracht, ve', 1),
+(5, '/img/categories/crosstrainer/Crosstrainer5.jpg', 'Focus Fitness Senator iPlus', 'De strakke Focus Fitness Senator iPlus Crosstrainer biedt je een breed scala aan mogelijkheden en voorziet je van de meest moderne technieken. Zo is de Senator voorzien van een stabiel in totaliteit 67 kg wegend frame en een 12 kg zwaar frontwheel wat zor', 1),
+(6, '/img/categories/hometrainer/Hometrainer1.jpg', 'VirtuFit HTR 1.0 hometrainectie', 'De VirtuFit HTR 1.0 Hometrainer voelt net aan alsof je op je eigen fiets zit. De 8 kg roterende massa is een realistische benadering van een echte fiets. De vorm van het zadel, de omwenteling van de trappers en de zithouding zijn dan ook goed afgekeken. H', 2),
+(7, '/img/categories/hometrainer/Hometrainer2.jpg', 'Tunturi Cardio Fit B30 Hometrainer', 'Blijf in beweging met deze hometrainer. De Tunturi Cardio Fit B30 is een instapmodel fitness fiets op maat van de beginnende of casual gebruiker. Thuis, in de sportschool of het revalidatiecentrum: met deze fiets train je met een lichte tot matige intensi', 2),
+(8, '/img/categories/hometrainer/Hometrainer3.jpg', 'SOUTHWALL Revalidatietrainer', 'Onze SOUTHWALL Revalidatietrainer - Hometrainer - revalidatiefiets - zwart is een klein, zeer eenvoudig te gebruiken apparaat dat ontworpen is voor oefeningen voor het boven- en onderlichaam. Het maakt het mogelijk om met beide benen en armen te trappen, ', 2),
+(9, '/img/categories/hometrainer/Hometrainer4.jpg', 'VirtuFit Opvouwbare Home trainer', 'De VirtuFit Opvouwbare Hometrainer met Rugleuning en Tablethouder geeft je een goede training en is vervaardigd uit duurzame materialen wat resulteert in een lange levensduur. Deze veelzijdige home trainer verplaats je gemakkelijk van de ene ruimte naar d', 2),
+(10, '/img/categories/hometrainer/Hometrainer5.jpg', 'CAPITAL SPORTS Azura - hometrainer', 'De Capital Sports Azura M1 is een opvouwbare fietstrainer die U bij uw dagelijkse fitness-training ondersteunt en samengevouwen ook in de kleinste ruimte nog een plaats vindt. Met een paar handgrepen is hij opengevouwen en klaar voor de training.De grondv', 2),
+(11, '/img/categories/loopband/Loopband1.jpg', 'Loopband - Focus Fitness Jet 7 iPlus', 'De Focus Fitness Jet 7 iPlus is voorzien van de nieuwste technieken en voldoet aan alle wensen van de klant. Zo is de Jet 7 iPlus met zijn geïntegreerde Bluetooth systeem een geavanceerde loopband die geschikt is voor thuisgebruik. Dit zorgt ervoor dat je', 3),
+(12, '/img/categories/loopband/Loopband2.jpg', 'RS Sports Loopband Run 5', 'Een zeer complete en compacte loopband van RS Sports de RUN 5. Vanuit huis je conditie op niveau houden of verbeteren, dat kan nu zeer gemakkelijk met de RS Sports RUN 5 loopband. Deze loopband is geschikte voor de beginnende loper, door armsteun te gebru', 3),
+(13, '/img/categories/loopband/Loopband3.jpg', 'HomAthlon HA-105', 'Wil je graag conditie opbouwen of dit graag op peil houden? Dan is deze magnetische loopband voor thuis perfect voor jou! Met deze loopband kan je wandelen, joggen en hardlopen in het comfort van je eigen huis. Dus of je nu een beginnend sporter bent, reg', 3),
+(14, '/img/categories/loopband/Loopband4.jpg', 'Homathlon Elektrische Loopband', 'Blijf je graag fit of wil je graag fit worden en wat kilootjes kwijt? Dan is een loopband een ideaal middel. Wandelen is namelijk weinig belastend voor spieren en gewrichten en de duur kan in je eigen tempo opgebouwd worden. Loop je liever lekker door? Ge', 3),
+(15, '/img/categories/loopband/Loopband5.jpg', 'Tunturi Cardio Fit T40', 'Heb je niet altijd zin om buiten de deur te trainen? Met de Tunturi Cardio Fit T40 werk je thuis aan je conditie! Met maar liefst 41 trainingsprogramma’s heb je altijd een training op maat.\r\n', 3),
+(16, '/img/categories/roeitrainer/Roeitrainer1.jpg', 'Tunturi Cardio Fit R20 Roeier', 'Fitness is fun! Eén van de meest efficiënte manieren om je lichaam te trainen is met een roeitrainer. Met de Tunturi Cardio Fit R20 ga je thuis aan de slag. Deze roeibeweging zet bijna alle belangrijke spieren aan het werk.\r\n', 4),
+(17, '/img/categories/roeitrainer/Roeitrainer2.jpg', 'VirtuFit Row 450', 'De VirtuFit Row 450 heeft een “silent magnetic” weerstandssysteem waardoor je flexibel de weerstand kunt aanpassen. Daarnaast maakt het schakelen tussen de 10 verschillende weerstanden nauwelijks geluid. Dit maakt het apparaat ideaal om thuis mee te sport', 4),
+(18, '/img/categories/roeitrainer/Roeitrainer3.jpg', 'Senz Sports R5000', 'De Senz Sports R5000 is een high-end roeitrainer van professionele kwaliteit, uitermate geschikt voor commerciële doeleinden of thuis gebruik. Het luchtweerstand systeem met het FAN Wheel System zorgt voor een optimale roeibeleving waarbij de weerstand op', 4),
+(19, '/img/categories/roeitrainer/Roeitrainer4.jpg', 'VirtuFit Row Ultimate Pro 2i', 'Combineer een van de meest populaire Virtufit roeitraners met je favoriete trainingsapps. Dan krijg je de VirtuFit Ultimate Pro 2i Roeitrainer Bluetooth/ANT+. Met deze roeitrainer maak je gebruik van populaire apps als Kinomap en GymTrakrs en Selfloops. P', 4),
+(20, '/img/categories/roeitrainer/Roeitrainer5.jpg', 'Tunturi Cardio Fit R20', 'Fitness is fun! Eén van de meest efficiënte manieren om je lichaam te trainen is met een roeitrainer. Met de Tunturi Cardio Fit R20 ga je thuis aan de slag. Deze roeibeweging zet bijna alle belangrijke spieren aan het werk.\r\n', 4);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `product`
+-- Tabelstructuur voor tabel `reviews`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `category_id` int(11) NOT NULL
+  `date` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `stars` int(5) NOT NULL,
+  `product_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `product`
---
-
-INSERT INTO `product` (`id`, `name`, `picture`, `description`, `category_id`) VALUES
-(1, 'crosstrainer 1', 'categories/crosstrainer/cr1.jpg', 'De Focus Fitness Fox 3 is de ideale crosstrainer voor thuisgebruik. Deze crosstrainer is fluisterstil, heeft een relatief lange lengtepas, is stabiel en heeft een zwaar vliegwiel. Hierdoor heeft de Fox 3 al vier keer de \'Best Reviewed\' award van Kieskeurig.nl verdiend! Door de vele trainingsprogramma\'s is het mogelijk om effectief je persoonlijke doelen te behalen met deze crosstrainer.', 1),
-(2, 'crosstrainer 2', 'categories/crosstrainer/cr2.jpg', 'De Focus Fitness Fox 4 is een fantastische crosstrainer voor elke thuissporter. Deze voorwiel aangedreven crosstrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 1),
-(3, 'crosstrainer 3', 'categories/crosstrainer/cr3.jpg', 'De Fox 5 iPlus is een fantastische crosstrainer om intensief thuis te gebruiken. Deze crosstrainer is ijzersterk, geruisloos, beschikt over een zwaar vliegwiel en een grote lengtepas, heeft een uitgebreid display en heeft daarnaast de mogelijkheid om een koppeling met een tablet/smartphone te maken. Mede door al deze voordelen hebben consumenten de Fox 5 iPlus eerder verkozen tot de best gewaardeerde crosstrainer van Nederland!', 1),
-(4, 'crosstrainer 4', 'categories/crosstrainer/cr4.jpg', 'De Fox 5 iPlus is een fantastische crosstrainer om intensief thuis te gebruiken. Deze crosstrainer is ijzersterk, geruisloos, beschikt over een zwaar vliegwiel en een grote lengtepas, heeft een uitgebreid display en heeft daarnaast de mogelijkheid om een koppeling met een tablet/smartphone te maken. Mede door al deze voordelen hebben consumenten de Fox 5 iPlus eerder verkozen tot de best gewaardeerde crosstrainer van Nederland!', 1),
-(5, 'crosstrainer 5', 'categories/crosstrainer/cr5.jpg', 'De Fox 3 HRC weegt 48 kg en is voorzien van een degelijke staalconstructie. Het is dankzij deze stabiele constructie mogelijk om een persoon tot 120 kg te laten trainen op deze crosstrainer.', 1),
-(6, 'crosstrainer 6', 'categories/crosstrainer/cr6.jpg', 'Als je een crosstrainer zoekt met veel programma’s en weerstandsniveaus, is deze proform 325 CSEi een zeer goede keuze. Hij is van veel gemakken, zoals ventilatoren, tablet- en bidonhouder, speakers en hartslagsensoren voorzien en toch nog zeer gebruiksvriendelijk dankzij het handige display. Het fijne aan deze crosstrainer is ook de optie om te verbinden met jouw tablet of smartphone en de handigheid van het verplaatsen door middel van de transportwieltjes aan de achterzijde en dankzij het magneetweerstandsysteem is hij geruislo', 1),
-(7, 'hometrainer', 'hometrainer-fitcycle-30.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(8, 'hometrainer', '550x786.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(9, 'hometrainer', '550x813.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(10, 'hometrainer', 'darwin-hometrainer-ht40-01_1600.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(11, 'hometrainer', 'fit_bike_ride_2_b600p-sm3730_-1.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(12, 'hometrainer', 'hometrainer-cardio-fit-b30.jpg', 'De Focus Fitness Fox 4 is een fantastische hometrainer voor elke thuissporter. Deze voorwiel aangedreven hometrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 2),
-(13, 'loopband', 'loopband-fitrun-70i.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(14, 'loopband', 'jet_5_9x-min.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(15, 'loopband', 'jet-7_1.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(16, 'loopband', 'fflb034-001.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(17, 'loopband', 'cardiostrong-treadmill-tx30-01_1600.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(18, 'loopband', '550x684.jpg', 'De Focus Fitness Fox 4 is een fantastische \r\nloopband voor elke thuissporter. Deze voorwiel aangedreven loopband heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 3),
-(19, 'roeitrainer', 'infiniti-r-70i.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4),
-(20, 'roeitrainer', '550x380.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4),
-(21, 'roeitrainer', 'infiniti-r-70i.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4),
-(22, 'roeitrainer', 'roeitrainer-dkn-h2oar.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4),
-(23, 'roeitrainer', 'roeitrainer-performance-r60.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4),
-(24, 'roeitrainer', 'virtufit-row-10-roeitrainer-gratis-trainingsschema-3.jpg', 'De Focus Fitness Fox 4 is een fantastische roeitrainer voor elke thuissporter. Deze voorwiel aangedreven roeitrainer heeft een ongelooflijk scherpe prijs voor de uitstekende specificaties die hij te bieden heeft. Met een eigen gewicht van 67 kg, een vliegwiel van 7 kg en een lengtepas van 50 cm is een comfortabele en stabiele sportervaring gegarandeerd.', 4);
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `review`
---
-
-CREATE TABLE `review` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
-  `description` text NOT NULL,
-  `stars` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `review`
---
-
-INSERT INTO `review` (`id`, `user_id`, `date`, `description`, `stars`, `product_id`) VALUES
-(34, 1, '2021-11-25', 'asdsad', 3, 1),
-(35, 1, '2021-11-25', 'aaasdadssa', 2, 1),
-(36, 1, '2021-11-25', 'hhrh', 1, 1),
-(37, 1, '2021-11-25', 'hhrh', 1, 1),
-(38, 1, '2021-11-25', 'hhrh', 1, 1),
-(39, 1, '2021-11-25', 'hhrh', 1, 1),
-(40, 1, '2021-11-25', 'hhrh', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `role` enum('member','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `user`
---
-
-INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `role`) VALUES
-(1, 'p@roc.nl', 'qwerty', 'Piet', 'Jawali', 'admin');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -173,31 +110,15 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `openings_tijden`
+-- Indexen voor tabel `products`
 --
-ALTER TABLE `openings_tijden`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `product`
+-- Indexen voor tabel `reviews`
 --
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
-
---
--- Indexen voor tabel `review`
---
-ALTER TABLE `review`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `stars` (`stars`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `review_ibfk_2` (`user_id`);
-
---
--- Indexen voor tabel `user`
---
-ALTER TABLE `user`
+ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -208,48 +129,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT voor een tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT voor een tabel `openings_tijden`
+-- AUTO_INCREMENT voor een tabel `products`
 --
-ALTER TABLE `openings_tijden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `products`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT voor een tabel `product`
+-- AUTO_INCREMENT voor een tabel `reviews`
 --
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT voor een tabel `review`
---
-ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT voor een tabel `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Beperkingen voor geëxporteerde tabellen
---
-
---
--- Beperkingen voor tabel `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
-
---
--- Beperkingen voor tabel `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
