@@ -12,18 +12,18 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/categories">Sportapparaat</a>
+                    <a class="nav-link" href="/categories.php">Sportapparaat</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="#">Registreren</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="/contact.php">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link-" href="/login">Inloggen</a>
+                    <a class="nav-link-" href="/login.php">Inloggen</a>
                 </li>
             </ul>
         </div>
